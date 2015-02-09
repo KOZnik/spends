@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wydatki</string>
+    <string name="add_category">Dodaj kategorię</string>
+    <string name="title_activity_add_category">Lista kategorii</string>
+    <string name="category_name">Nazwa kategorii</string>
+    <string name="add">Dodaj</string>
+    <string name="add_position">Dodaj pozycję</string>
+    <string name="position">Pozycja</string>
+    <string name="position_name">Nazwa pozycji</string>
+
+</resources>
