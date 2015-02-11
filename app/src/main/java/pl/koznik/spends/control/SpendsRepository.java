@@ -2,11 +2,12 @@ package pl.koznik.spends.control;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.myapplication2.app.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpendsRepository {
@@ -44,6 +45,24 @@ public class SpendsRepository {
             }
         }
         return Response.OK(categoryName);
+    }
+
+    public Response<List<String>> allCategories() {
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.query(
+                SpendsSQLiteOpenHelper.SpendsTableConstants.TABLE_CATEGORY,
+                new String[]{SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_COLUMN_NAME}, null, null, null, null,
+                SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_COLUMN_CREATE_DATE + " DESC"
+        );
+        List<String> categoryNames = new ArrayList<String>();
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            categoryNames.add(cursor.getString(cursor.getColumnIndexOrThrow(SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_COLUMN_NAME)));
+            while (cursor.moveToNext()) {
+                categoryNames.add(cursor.getString(cursor.getColumnIndexOrThrow(SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_COLUMN_NAME)));
+            }
+        }
+        return Response.OK(categoryNames);
     }
 
 }

@@ -1,12 +1,14 @@
 package pl.koznik.spends.boundary;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.example.myapplication2.app.R;
+import pl.koznik.spends.control.SpendsRepository;
+
+import java.util.List;
 
 
 public class CategoryActivity extends ActionBarActivity {
@@ -15,8 +17,8 @@ public class CategoryActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        List<String> categoryNames = new SpendsRepository(this).allCategories().getReturnObject();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

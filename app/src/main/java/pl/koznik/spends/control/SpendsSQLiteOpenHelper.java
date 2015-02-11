@@ -16,8 +16,6 @@ public class SpendsSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //TODO remove
-        System.out.println("onCreate called");
         db.execSQL(SpendsTableConstants.TABLE_CATEGORY_CREATE);
         db.execSQL(SpendsTableConstants.TABLE_CATEGORY_POSITION_CREATE);
     }
