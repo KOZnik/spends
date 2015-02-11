@@ -38,16 +38,20 @@ public class SpendsSQLiteOpenHelper extends SQLiteOpenHelper {
         public static final String CATEGORY_COLUMN_NAME = "name";
         public static final String CATEGORY_COLUMN_CREATE_DATE = "create_date";
         public static final String CATEGORY_POSITION_COLUMN_NAME = "name";
+        public static final String CATEGORY_POSITION_COLUMN_ID = "id";
         public static final String CATEGORY_POSITION_COLUMN_CREATE_DATE = "create_date";
         public static final String CATEGORY_POSITION_COLUMN_CATEGORY_ID = "category_id";
 
         //Creates
-        public static final String TABLE_CATEGORY_CREATE = "create table " + TABLE_CATEGORY + " (" + CATEGORY_COLUMN_NAME
-                + " text primary key, " + CATEGORY_COLUMN_CREATE_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP);";
+        public static final String TABLE_CATEGORY_CREATE = "CREATE TABLE " + TABLE_CATEGORY + " (" + CATEGORY_COLUMN_NAME
+                + " TEXT PRIMARY KEY, " + CATEGORY_COLUMN_CREATE_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP);";
 
-        public static final String TABLE_CATEGORY_POSITION_CREATE = "create table " + TABLE_CATEGORY_POSITION + " (" + CATEGORY_POSITION_COLUMN_NAME
-                + " text, " + CATEGORY_POSITION_COLUMN_CREATE_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP, " + CATEGORY_POSITION_COLUMN_CATEGORY_ID + " text,"
-                + " PRIMARY KEY (" + CATEGORY_POSITION_COLUMN_NAME + ", " + CATEGORY_POSITION_COLUMN_CATEGORY_ID + "),"
+        public static final String TABLE_CATEGORY_POSITION_CREATE = "CREATE TABLE " + TABLE_CATEGORY_POSITION + " ("
+                + CATEGORY_POSITION_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + CATEGORY_POSITION_COLUMN_NAME + " TEXT, "
+                + CATEGORY_POSITION_COLUMN_CREATE_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP, "
+                + CATEGORY_POSITION_COLUMN_CATEGORY_ID + " TEXT,"
+                + "UNIQUE (" + CATEGORY_POSITION_COLUMN_NAME + ", " + CATEGORY_POSITION_COLUMN_CATEGORY_ID + "), "
                 + " FOREIGN KEY (" + CATEGORY_POSITION_COLUMN_CATEGORY_ID + ") REFERENCES " + TABLE_CATEGORY + " (" + CATEGORY_COLUMN_NAME + "));";
 
     }

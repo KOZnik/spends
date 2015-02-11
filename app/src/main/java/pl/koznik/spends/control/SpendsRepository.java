@@ -28,7 +28,7 @@ public class SpendsRepository {
         ContentValues values = new ContentValues();
         values.put(SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_COLUMN_NAME, categoryName);
         try {
-            db.insert(SpendsSQLiteOpenHelper.SpendsTableConstants.TABLE_CATEGORY, null, values);
+            db.insertOrThrow(SpendsSQLiteOpenHelper.SpendsTableConstants.TABLE_CATEGORY, null, values);
         } catch (Exception e) {
             return Response.FAIL(context.getResources().getString(R.string.category_name_aready_exist_error));
         }
@@ -38,7 +38,7 @@ public class SpendsRepository {
             values.put(SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_POSITION_COLUMN_CATEGORY_ID, categoryName);
             values.put(SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_POSITION_COLUMN_NAME, position);
             try {
-                db.insert(SpendsSQLiteOpenHelper.SpendsTableConstants.TABLE_CATEGORY_POSITION, null, values);
+                db.insertOrThrow(SpendsSQLiteOpenHelper.SpendsTableConstants.TABLE_CATEGORY_POSITION, null, values);
             } catch (SQLiteConstraintException e) {
                 return Response.FAIL(context.getResources().getString(R.string.category_position_already_exist_error) + ": " + position);
             }
