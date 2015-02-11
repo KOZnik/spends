@@ -1,3 +1,3 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.example.myapplication2.app.AddCategoryActivity">
+      tools:context="pl.koznik.spends.boundary.AddCategoryActivity">
 </menu>

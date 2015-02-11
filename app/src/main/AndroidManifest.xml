@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.myapplication2.app.CategoryActivity"
+            android:name="pl.koznik.spends.boundary.CategoryActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.myapplication2.app.AddCategoryActivity"
+            android:name="pl.koznik.spends.boundary.AddCategoryActivity"
             android:label="@string/title_activity_add_category"
-            android:parentActivityName="com.example.myapplication2.app.CategoryActivity" >
+            android:parentActivityName="pl.koznik.spends.boundary.CategoryActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myapplication2.app.CategoryActivity" />
+                android:value="pl.koznik.spends.boundary.CategoryActivity" />
         </activity>
     </application>
 

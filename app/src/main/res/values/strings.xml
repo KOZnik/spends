@@ -9,5 +9,10 @@
     <string name="add_position">Dodaj pozycję</string>
     <string name="position">Pozycja</string>
     <string name="position_name">Nazwa pozycji</string>
+    <string name="save">Zapisz</string>
+    <string name="validation_error">Błąd wprowadzanych danych</string>
+    <string name="category_validation_error">Nazwa kategorii nie może być pusta</string>
+    <string name="category_name_aready_exist_error">Podana kategoria już istnieje w systemie</string>
+    <string name="category_position_already_exist_error">Podana pozycja już istnieje w ramach wybranej kategorii</string>
 
 </resources>
