@@ -1,10 +1,12 @@
-package com.example.myapplication2.app;
+package pl.koznik.spends.boundary;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.example.myapplication2.app.R;
 
 public class AddCategoryActivity extends Activity {
 

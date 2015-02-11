@@ -1,10 +1,12 @@
-package com.example.myapplication2.app;
+package pl.koznik.spends.boundary;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.myapplication2.app.R;
 
 
 public class CategoryActivity extends ActionBarActivity {
