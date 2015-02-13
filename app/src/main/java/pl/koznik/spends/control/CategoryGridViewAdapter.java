@@ -1,6 +1,9 @@
 package pl.koznik.spends.control;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleAdapter;
@@ -14,14 +17,14 @@ public class CategoryGridViewAdapter extends SimpleAdapter {
         super(context, data, resource, from, to);
     }
 
-    @Override
+    /*@Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = super.getView(position, convertView, parent);
 
-        int color = 0x000000; // Transparent
-
-        view.setBackgroundColor(color);
+        StateListDrawable drawable = (StateListDrawable) view.getBackground();
+        drawable.addState(new int[]{android.R.attr.state_pressed},
+                new ColorDrawable(Color.parseColor("#ffffff")));
 
         return view;
-    }
+    }*/
 }

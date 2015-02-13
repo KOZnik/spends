@@ -1,24 +1,29 @@
 package pl.koznik.spends.control;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.myapplication2.app.R;
+
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.res.StringRes;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.koznik.spends.R;
+
+@EBean(scope = EBean.Scope.Singleton)
 public class SpendsRepository {
 
-    private SpendsSQLiteOpenHelper helper;
-    private Context context;
+    @Bean
+    SpendsSQLiteOpenHelper helper;
 
-    public SpendsRepository(Context context) {
-        this.context = context;
-        helper = new SpendsSQLiteOpenHelper(context);
-    }
+    @StringRes(R.string.category_name_aready_exist_error)
+    String categoryNameAlreadyExistErrorMessage;
+    @StringRes(R.string.category_position_already_exist_error)
+    String categoryPositionAlreadyExistErrorMessage;
 
     public Response<String> createCategory(String categoryName, List<String> positions) {
         if (categoryName == null || categoryName.isEmpty()) {
@@ -31,7 +36,7 @@ public class SpendsRepository {
         try {
             db.insertOrThrow(SpendsSQLiteOpenHelper.SpendsTableConstants.TABLE_CATEGORY, null, values);
         } catch (Exception e) {
-            return Response.FAIL(context.getResources().getString(R.string.category_name_aready_exist_error));
+            return Response.FAIL(categoryNameAlreadyExistErrorMessage);
         }
 
         for (String position : positions) {
@@ -41,7 +46,7 @@ public class SpendsRepository {
             try {
                 db.insertOrThrow(SpendsSQLiteOpenHelper.SpendsTableConstants.TABLE_CATEGORY_POSITION, null, values);
             } catch (SQLiteConstraintException e) {
-                return Response.FAIL(context.getResources().getString(R.string.category_position_already_exist_error) + ": " + position);
+                return Response.FAIL(categoryPositionAlreadyExistErrorMessage + ": " + position);
             }
         }
         return Response.OK(categoryName);
@@ -54,7 +59,7 @@ public class SpendsRepository {
                 new String[]{SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_COLUMN_NAME}, null, null, null, null,
                 SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_COLUMN_CREATE_DATE + " DESC"
         );
-        List<String> categoryNames = new ArrayList<String>();
+        List<String> categoryNames = new ArrayList<>();
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             categoryNames.add(cursor.getString(cursor.getColumnIndexOrThrow(SpendsSQLiteOpenHelper.SpendsTableConstants.CATEGORY_COLUMN_NAME)));

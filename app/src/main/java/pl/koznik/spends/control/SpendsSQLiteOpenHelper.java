@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import org.androidannotations.annotations.EBean;
+
+@EBean
 public class SpendsSQLiteOpenHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
